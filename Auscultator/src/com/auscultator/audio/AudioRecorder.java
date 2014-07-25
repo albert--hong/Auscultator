@@ -23,12 +23,17 @@ import java.io.IOException;
 public class AudioRecorder {
     private final String TAG = "AudioRecorder";
     private static AudioRecorder mInstance;
+    
+    public final static int BREATH_SOUNDS = 0x10;
+    public final static int HEART_SOUNDS = 0x12;
+    
     private final static int ST_NOREADY = -1;           // The STATE of audio record device have no ready.
     private final static int ST_READY = 0;              // The STATE of audio record device ready.
     private final static int ST_RECORDING = 1;          // The STATE of recording audio.
     private final static int ST_RECORDED = 2;           // The STATE of audio recorded.
     private final static int ST_PLAYING = 4;            // The STATE of playing recorded audio.
     private final static int ST_STOPPED = 5;            // The STATE of stop playing recorded audio
+    
     /**
      * The buffer size for audio file.
      */
@@ -263,7 +268,7 @@ public class AudioRecorder {
         return res;
     }
 
-    public boolean save() {
+    public boolean save(int type) {
         return false;
     }
 

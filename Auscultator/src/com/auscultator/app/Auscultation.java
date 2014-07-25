@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.auscultator.audio.AudioRecorder;
+import com.auscultator.data.DataAdapter;
 
 public class Auscultation extends Activity {
     private final static String TAG = "AUSCULTATION";
@@ -27,6 +29,7 @@ public class Auscultation extends Activity {
     private Button btn_cancel;
 
     private AudioRecorder audioRecorder;
+    private DataAdapter dataAdapter;
 
     private int record_state;
 
@@ -39,7 +42,7 @@ public class Auscultation extends Activity {
         btn_recorder = (ImageView) findViewById(R.id.btn_recorder);
         btn_save = (Button) findViewById(R.id.auscult_save);
         btn_cancel = (Button) findViewById(R.id.auscult_cancle);
-        /* Set view's listener */
+        /* Set view's listeners */
         btn_recorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,20 +115,60 @@ public class Auscultation extends Activity {
                 return;
             }
         });
-
+        /**
+         * The onClick listener for saving button.
+         */
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // save the sounds to medical records
-                audioRecorder.save();
-                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
-                record_state = ST_READY;
+            	Dialog dlg = new AlertDialog.Builder(Auscultation.this)
+            		.setTitle(R.string.title_dlg_save_sounds)
+            		.setMessage(R.string.content_dlg_save_sounds)
+            		.setPositiveButton(R.string.heart_sounds, new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							// save the sounds to heart sounds records
+							audioRecorder.save(audioRecorder.HEART_SOUNDS);
+							// open the medical records activity
+							Intent intent = new Intent();
+							intent.setClass(Auscultation.this, MedicalRecords.class);
+							intent.putExtra("sounds_type", audioRecorder.HEART_SOUNDS);
+							Auscultation.this.startActivity(intent);
+			                // restore the view's status. 
+			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
+			                record_state = ST_READY;
+						}
+					})
+					.setNegativeButton(R.string.breath_sounds, new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							// save the sounds to breath sounds records
+							audioRecorder.save(audioRecorder.BREATH_SOUNDS);
+							// open the medical records activity
+							Intent intent = new Intent();
+							intent.setClass(Auscultation.this, MedicalRecords.class);
+							intent.putExtra("sounds_type", audioRecorder.HEART_SOUNDS);
+							Auscultation.this.startActivity(intent);
+			                // restore the view's status. 
+			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
+			                record_state = ST_READY;
+						}
+					}).create();
+            	
+            		dlg.show();
+                
             }
         });
-
+        /**
+         * The onClick listener of cancel button.
+         */
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            	if (record_state == ST_READY) {
+            		Auscultation.this.finish();
+            		return;
+            	}
                 Dialog dlg = new AlertDialog.Builder(Auscultation.this)
                         .setTitle(R.string.title_cancel_medical_record)
                         .setMessage(R.string.cancel_medical_record)
