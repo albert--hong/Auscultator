@@ -75,11 +75,15 @@ public class AudioFileManager {
      */
     public File[] create_cache_file() throws IOException {
         File files[] = new File[2];
-//        files[0] = new File("rec_temp.dat");
-//        files[1] = new File("rec_temp.wav");
         files[0] = File.createTempFile("rec", ".dat", this.tmp_dir);
         files[1] = File.createTempFile("rec", ".wav", this.tmp_dir);
         return files;
     }
-//    public
+    
+    /**
+     * Get the sounds direcotory path.
+     */
+    public File get_sounds_dir() {
+    	return this.audio_dir;
+    }
 }

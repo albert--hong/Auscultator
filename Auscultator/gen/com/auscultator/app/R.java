@@ -48,6 +48,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int stop=0x7f02000f;
     }
     public static final class id {
+        public static final int age=0x7f08001a;
         public static final int audio=0x7f080001;
         public static final int auscult_cancle=0x7f080004;
         public static final int auscult_save=0x7f080005;
@@ -59,7 +60,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btn_recorder=0x7f080002;
         public static final int container=0x7f080012;
         public static final int female=0x7f08000b;
-        public static final int img=0x7f080017;
+        public static final int gender=0x7f080019;
+        public static final int img=0x7f08001c;
         public static final int listView=0x7f080006;
         public static final int male=0x7f08000c;
         public static final int medical_records_list=0x7f080011;
@@ -73,7 +75,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int new_medical_record_save=0x7f080010;
         public static final int new_medical_record_tel=0x7f08000e;
         public static final int progressBar=0x7f080003;
-        public static final int time=0x7f080019;
+        public static final int tel=0x7f08001b;
+        public static final int time=0x7f08001d;
+        public static final int user_img=0x7f080017;
     }
     public static final class layout {
         public static final int activity_auscultation=0x7f030000;
@@ -82,7 +86,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_heart_sounds=0x7f030003;
         public static final int activity_medical_records=0x7f030004;
         public static final int activity_menu=0x7f030005;
-        public static final int list_audio_item=0x7f030006;
+        public static final int item_medical_record=0x7f030006;
+        public static final int list_audio_item=0x7f030007;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

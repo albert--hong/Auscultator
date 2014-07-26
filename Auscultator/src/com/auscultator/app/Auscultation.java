@@ -128,11 +128,12 @@ public class Auscultation extends Activity {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							// save the sounds to heart sounds records
-							audioRecorder.save(audioRecorder.HEART_SOUNDS);
+							String sound_file = audioRecorder.save(AudioRecorder.HEART_SOUNDS);
 							// open the medical records activity
 							Intent intent = new Intent();
 							intent.setClass(Auscultation.this, MedicalRecords.class);
-							intent.putExtra("sounds_type", audioRecorder.HEART_SOUNDS);
+							intent.putExtra("sound_type", audioRecorder.HEART_SOUNDS);
+							intent.putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 
 			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
@@ -143,11 +144,12 @@ public class Auscultation extends Activity {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							// save the sounds to breath sounds records
-							audioRecorder.save(audioRecorder.BREATH_SOUNDS);
+							String sound_file = audioRecorder.save(AudioRecorder.BREATH_SOUNDS);
 							// open the medical records activity
 							Intent intent = new Intent();
 							intent.setClass(Auscultation.this, MedicalRecords.class);
 							intent.putExtra("sounds_type", audioRecorder.HEART_SOUNDS);
+							intent.putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 
 			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
