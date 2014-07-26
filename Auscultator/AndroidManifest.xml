@@ -34,7 +34,7 @@
             android:label="@string/title_activity_media_records" >
         </activity>
         <activity
-            android:name="com.auscultator.app.Contacts"
+            android:name="com.auscultator.app.MedicalRecord"
             android:label="@string/title_activity_contacts" >
         </activity>
     </application>

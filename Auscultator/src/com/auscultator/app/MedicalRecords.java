@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -79,8 +80,8 @@ public class MedicalRecords extends Activity {
 				Context.MODE_PRIVATE, null);
 		dataAdapter = DataAdapter.getInstance(db);
 		medical_records = dataAdapter.get_medical_records();
-		this.medical_records_adpter = new MedicalRecordAdapter(this, medical_records,
-				R.layout.item_medical_record, null, null);
+		this.medical_records_adpter = new MedicalRecordAdapter(this,
+				medical_records, R.layout.item_medical_record, null, null);
 		medical_records_list.setAdapter(medical_records_adpter);
 
 		// Add the listeners to the view
@@ -135,7 +136,7 @@ public class MedicalRecords extends Activity {
 				record.put("gender", gender);
 				record.put("age", age);
 				record.put("tel", tel);
-				
+
 				// If save a record with sound
 				if (sound_type != 0 && sound_file.length() > 0) {
 					record.put("type", sound_type);
@@ -146,23 +147,67 @@ public class MedicalRecords extends Activity {
 				else {
 					dataAdapter.create_person(record);
 				}
-				
-				((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE))
-					.hideSoftInputFromWindow(MedicalRecords.this.getCurrentFocus().getWindowToken(), 
-							InputMethodManager.HIDE_NOT_ALWAYS);
+
+				((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+						.hideSoftInputFromWindow(MedicalRecords.this
+								.getCurrentFocus().getWindowToken(),
+								InputMethodManager.HIDE_NOT_ALWAYS);
 				close_new_medical_record_form();
-				medical_records = dataAdapter.get_medical_records();
-				medical_records_adpter.notifyDataSetChanged();
+
+				MedicalRecords.this.finish();
 			}
 		});
 		/**
-		 * The listener for cancling to save.
+		 * The listener for canceling to save.
 		 */
 		new_medical_record_cancel
 				.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View arg0) {
 						close_new_medical_record_form();
+					}
+				});
+
+		/**
+		 * The listener for List Item Click
+		 */
+		medical_records_list
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> parent,
+							View itemClicked, int position, long id) {
+
+						Map<String, Object> medical_record = medical_records
+								.get((int) id);
+						// The click is want to read the medical record
+						if (sound_type == 0) {
+							Intent intent = new Intent();
+							intent.putExtra("userid", (Integer)medical_record.get("userid"));
+							intent.putExtra("name", (String)medical_record.get("name"));
+							intent.putExtra("gender", (Integer)medical_record.get("gender"));
+							intent.putExtra("age", (Integer)medical_record.get("age"));
+							intent.putExtra("tel", (String)medical_record.get("tel"));
+							
+							intent.setClass(MedicalRecords.this, MedicalRecord.class);
+							MedicalRecords.this.startActivity(intent);
+						} // The click is want to create a medical record
+						else {
+							Integer userid = medical_record
+									.containsKey("userid") ? (Integer) medical_record
+									.get("userid") : null;
+							if (userid != null && sound_file != null
+									&& sound_file.length() > 0) {
+
+								Map<String, Object> record = new HashMap<String, Object>();
+								record.put("type", sound_type);
+								record.put("sound_file", sound_file);
+								dataAdapter.create_record(userid, record);
+								
+								MedicalRecords.this.finish();
+							}
+
+						}
 					}
 				});
 	}

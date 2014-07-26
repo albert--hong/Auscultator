@@ -132,7 +132,7 @@ public class Auscultation extends Activity {
 							// open the medical records activity
 							Intent intent = new Intent();
 							intent.setClass(Auscultation.this, MedicalRecords.class);
-							intent.putExtra("sound_type", audioRecorder.HEART_SOUNDS);
+							intent.putExtra("sound_type", AudioRecorder.HEART_SOUNDS);
 							intent.putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 
@@ -148,7 +148,7 @@ public class Auscultation extends Activity {
 							// open the medical records activity
 							Intent intent = new Intent();
 							intent.setClass(Auscultation.this, MedicalRecords.class);
-							intent.putExtra("sounds_type", audioRecorder.HEART_SOUNDS);
+							intent.putExtra("sound_type", AudioRecorder.BREATH_SOUNDS);
 							intent.putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 

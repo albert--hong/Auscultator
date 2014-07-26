@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MedicalRecord" >
+
+    <!-- The form for medical record -->
+    <TableLayout
+        android:id="@+id/medical_record_form"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/medical_record_name"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="@string/gender"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/medical_record_gender"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="@string/age"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/medical_record_age"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="@string/tel"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/medical_record_tel"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp" />
+        </TableRow>
+    </TableLayout>
+    <!-- END The form for medical record -->
+
+	<!-- The list for heart sounds -->
+	<TextView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="30dp"
+	    android:layout_marginTop="10dp"
+	    android:textSize="24sp"
+	    android:gravity="center_vertical"
+	    android:text="@string/heart_sounds_lib"/>
+	
+	<ListView
+	    android:id="@+id/list_breath_sound_record_time" 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:divider="@color/blue"></ListView>
+	
+	<!-- END: The list for heart sounds -->
+	
+	<!-- The list for breath sounds -->
+	<TextView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="30dp"
+	    android:layout_marginTop="10dp"
+	    android:gravity="center_vertical"
+	    android:textSize="24sp"
+	    android:text="@string/breath_sounds_lib"/>
+	
+	<ListView 
+	    android:id="@+id/list_heart_sound_record_time"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:divider="@color/blue"></ListView>
+	
+	<!-- END: The list for breath sounds -->
+</LinearLayout>
