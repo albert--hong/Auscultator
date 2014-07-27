@@ -4,6 +4,8 @@
     <string name="app_name">听诊器</string>
     <string name="action_settings">Settings</string>
     <string name="auscultation">听诊</string>
+    <string name="breath_sounds">呼吸音</string>
+    <string name="heart_sounds">心音</string>
     <string name="breath_sounds_lib">呼吸音库</string>
     <string name="heart_sounds_lib">心音库</string>
     <string name="medical_records">电子病历</string>
@@ -21,6 +23,24 @@
     <string name="title_activity_heart_sounds">HeartSounds</string>
     <string name="title_activity_media_records">MediaRecords</string>
     <string name="title_activity_contacts">Contacts</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <string name="title_dlg_save_sounds">保存类型</string>
+    <string name="content_dlg_save_sounds">您希望保存为心音还是呼吸音</string>
+    
+    <string name="new_medical_record">新建电子病历</string>
+    <string name="name">姓名</string>
+    <string name="gender">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="age">年龄</string>
+    <string name="tel">联系电话</string>
+    <string name="hint_name">请在此输入姓名</string>
+    <string name="hint_gender">请在此输入性别</string>
+    <string name="hint_age">请在此输入年龄</string>
+    <string name="hint_tel">请在此输入联系电话</string>
+    
+    <string name="hint_lack_name">请输入姓名</string>
+    <string name="hint_lack_gender">请输入性别</string>
+    <string name="hint_lack_age">请输入年龄</string>
 
 </resources>

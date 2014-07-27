@@ -25,6 +25,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
@@ -48,49 +52,100 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int stop=0x7f02000f;
     }
     public static final class id {
-        public static final int audio=0x7f080001;
-        public static final int auscult_cancle=0x7f080004;
-        public static final int auscult_save=0x7f080005;
-        public static final int auscultation_menu=0x7f080000;
-        public static final int btn_auscultation=0x7f080008;
-        public static final int btn_breath_sounds=0x7f08000b;
-        public static final int btn_heart_sounds=0x7f08000a;
-        public static final int btn_medical_records=0x7f080009;
-        public static final int btn_recorder=0x7f080002;
-        public static final int container=0x7f080007;
-        public static final int img=0x7f08000c;
-        public static final int listView=0x7f080006;
-        public static final int name=0x7f08000d;
-        public static final int progressBar=0x7f080003;
-        public static final int time=0x7f08000e;
+        public static final int action_settings=0x7f090029;
+        public static final int age=0x7f090022;
+        public static final int audio=0x7f090001;
+        public static final int auscult_cancle=0x7f090003;
+        public static final int auscult_save=0x7f090004;
+        public static final int auscultation_menu=0x7f090000;
+        public static final int breath_record_time=0x7f09001d;
+        public static final int btn_auscultation=0x7f090019;
+        public static final int btn_breath_sounds=0x7f09001c;
+        public static final int btn_heart_sounds=0x7f09001b;
+        public static final int btn_medical_records=0x7f09001a;
+        public static final int btn_recorder=0x7f090002;
+        public static final int container=0x7f090018;
+        public static final int female=0x7f090011;
+        public static final int gender=0x7f090021;
+        public static final int heart_record_time=0x7f09001e;
+        public static final int listView=0x7f090005;
+        public static final int list_breath_sound_record_time=0x7f09000c;
+        public static final int list_heart_sound_record_time=0x7f09000b;
+        public static final int male=0x7f090012;
+        public static final int medical_record_age=0x7f090009;
+        public static final int medical_record_form=0x7f090006;
+        public static final int medical_record_gender=0x7f090008;
+        public static final int medical_record_name=0x7f090007;
+        public static final int medical_record_tel=0x7f09000a;
+        public static final int medical_records_list=0x7f090017;
+        public static final int name=0x7f090020;
+        public static final int new_medical_record=0x7f09000d;
+        public static final int new_medical_record_age=0x7f090013;
+        public static final int new_medical_record_cancel=0x7f090015;
+        public static final int new_medical_record_form=0x7f09000e;
+        public static final int new_medical_record_gender=0x7f090010;
+        public static final int new_medical_record_name=0x7f09000f;
+        public static final int new_medical_record_save=0x7f090016;
+        public static final int new_medical_record_tel=0x7f090014;
+        public static final int sound_record_age=0x7f090027;
+        public static final int sound_record_gender=0x7f090026;
+        public static final int sound_record_img=0x7f090024;
+        public static final int sound_record_name=0x7f090025;
+        public static final int sound_record_time=0x7f090028;
+        public static final int tel=0x7f090023;
+        public static final int user_img=0x7f09001f;
     }
     public static final class layout {
         public static final int activity_auscultation=0x7f030000;
         public static final int activity_breath_sounds=0x7f030001;
         public static final int activity_contacts=0x7f030002;
         public static final int activity_heart_sounds=0x7f030003;
-        public static final int activity_medical_records=0x7f030004;
-        public static final int activity_menu=0x7f030005;
-        public static final int list_audio_item=0x7f030006;
+        public static final int activity_medical_record=0x7f030004;
+        public static final int activity_medical_records=0x7f030005;
+        public static final int activity_menu=0x7f030006;
+        public static final int item_breath_record_time=0x7f030007;
+        public static final int item_heart_record_time=0x7f030008;
+        public static final int item_medical_record=0x7f030009;
+        public static final int item_sound_record=0x7f03000a;
+    }
+    public static final class menu {
+        public static final int medical_record=0x7f080000;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
+        public static final int age=0x7f060019;
         public static final int app_name=0x7f060000;
         public static final int auscultation=0x7f060002;
-        public static final int breath_sounds_lib=0x7f060003;
-        public static final int cancel=0x7f060006;
-        public static final int cancel_medical_record=0x7f06000a;
-        public static final int confirm=0x7f060008;
-        public static final int heart_sounds_lib=0x7f060004;
-        public static final int hello_world=0x7f060010;
-        public static final int medical_records=0x7f060005;
-        public static final int save=0x7f060007;
-        public static final int title_activity_auscultation=0x7f06000b;
-        public static final int title_activity_breath_sounds=0x7f06000c;
-        public static final int title_activity_contacts=0x7f06000f;
-        public static final int title_activity_heart_sounds=0x7f06000d;
-        public static final int title_activity_media_records=0x7f06000e;
-        public static final int title_cancel_medical_record=0x7f060009;
+        public static final int breath_sounds=0x7f060003;
+        public static final int breath_sounds_lib=0x7f060005;
+        public static final int cancel=0x7f060008;
+        public static final int cancel_medical_record=0x7f06000c;
+        public static final int confirm=0x7f06000a;
+        public static final int content_dlg_save_sounds=0x7f060013;
+        public static final int female=0x7f060018;
+        public static final int gender=0x7f060016;
+        public static final int heart_sounds=0x7f060004;
+        public static final int heart_sounds_lib=0x7f060006;
+        public static final int hint_age=0x7f06001d;
+        public static final int hint_gender=0x7f06001c;
+        public static final int hint_lack_age=0x7f060021;
+        public static final int hint_lack_gender=0x7f060020;
+        public static final int hint_lack_name=0x7f06001f;
+        public static final int hint_name=0x7f06001b;
+        public static final int hint_tel=0x7f06001e;
+        public static final int male=0x7f060017;
+        public static final int medical_records=0x7f060007;
+        public static final int name=0x7f060015;
+        public static final int new_medical_record=0x7f060014;
+        public static final int save=0x7f060009;
+        public static final int tel=0x7f06001a;
+        public static final int title_activity_auscultation=0x7f06000d;
+        public static final int title_activity_breath_sounds=0x7f06000e;
+        public static final int title_activity_contacts=0x7f060011;
+        public static final int title_activity_heart_sounds=0x7f06000f;
+        public static final int title_activity_media_records=0x7f060010;
+        public static final int title_cancel_medical_record=0x7f06000b;
+        public static final int title_dlg_save_sounds=0x7f060012;
     }
     public static final class style {
         /** 

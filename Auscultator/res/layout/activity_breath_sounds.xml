@@ -38,7 +38,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/menu_icon" />
+                android:src="@drawable/menu_icon"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>
@@ -47,7 +48,6 @@
         android:id="@+id/listView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:listSelector="@color/blue" />
+        android:layout_weight="1" />
 
 </LinearLayout>
