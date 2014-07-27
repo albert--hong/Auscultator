@@ -81,19 +81,20 @@ public class MedicalRecord extends Activity {
 		dataAdapter = DataAdapter.getInstance(db);
 		Cursor heart_sounds = dataAdapter.get_heart_sounds(userid);
 		Cursor breath_sounds = dataAdapter.get_breath_sounds(userid);
+		
 		// Show the List
-		heart_sound_adapter = new SimpleCursorAdapter(getApplicationContext(),
-				R.layout.item_record_time, heart_sounds,
-				new String[] { "time" }, new int[] { R.id.record_time },
-				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-		list_heart_sound_record_time.setAdapter(heart_sound_adapter);
-
 		breath_sound_adapter = new SimpleCursorAdapter(getApplicationContext(),
-				R.layout.item_record_time, breath_sounds,
-				new String[] { "time" }, new int[] { R.id.record_time },
+				R.layout.item_breath_record_time, breath_sounds,
+				new String[] { "time" }, new int[] { R.id.breath_record_time },
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 		list_breath_sound_record_time.setAdapter(breath_sound_adapter);
 
+		heart_sound_adapter = new SimpleCursorAdapter(getApplicationContext(),
+				R.layout.item_heart_record_time, heart_sounds,
+				new String[] { "time" }, new int[] { R.id.heart_record_time },
+				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+		list_heart_sound_record_time.setAdapter(heart_sound_adapter);
+		
 		// audio player
 		audioPlayer = new AudioPlayer();
 
@@ -104,9 +105,15 @@ public class MedicalRecord extends Activity {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
-						Object sound_file = parent.getAdapter().getItem(
+						Cursor cursor = (Cursor) parent.getAdapter().getItem(
 								position);
-						System.out.print(sound_file.toString());
+						if (cursor.moveToFirst() != false) {
+							String sound_file = cursor.getString(cursor
+									.getColumnIndex("sound_file"));
+							if (sound_file != null) {
+								audioPlayer.play(sound_file, null);
+							}
+						}
 					}
 				});
 		list_breath_sound_record_time
@@ -121,7 +128,7 @@ public class MedicalRecord extends Activity {
 							String sound_file = cursor.getString(cursor
 									.getColumnIndex("sound_file"));
 							if (sound_file != null) {
-								audioPlayer.play(sound_file,null);
+								audioPlayer.play(sound_file, null);
 							} else {
 
 							}

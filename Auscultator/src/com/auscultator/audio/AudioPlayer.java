@@ -15,8 +15,8 @@ public class AudioPlayer {
 	public void play(String file, MediaPlayer.OnCompletionListener listener) {
 		if (this.audio_player.isPlaying()) {
 			this.audio_player.stop();
-			this.audio_player.reset();
 		}
+		this.audio_player.reset();
 		try {
 			audio_player.setOnCompletionListener(listener);
 			audio_player.setDataSource(file);

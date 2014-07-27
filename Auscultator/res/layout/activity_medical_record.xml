@@ -110,7 +110,7 @@
 	    android:text="@string/heart_sounds_lib"/>
 	
 	<ListView
-	    android:id="@+id/list_breath_sound_record_time" 
+	    android:id="@+id/list_heart_sound_record_time" 
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:divider="@color/blue"></ListView>
@@ -127,7 +127,7 @@
 	    android:text="@string/breath_sounds_lib"/>
 	
 	<ListView 
-	    android:id="@+id/list_heart_sound_record_time"
+	    android:id="@+id/list_breath_sound_record_time"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:divider="@color/blue"></ListView>

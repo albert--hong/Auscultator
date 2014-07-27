@@ -218,12 +218,11 @@ public class DataAdapter {
 	 * @return cursor
 	 */
 	public Cursor get_heart_sounds(Integer userid) {
-		 return this.db
-		 .rawQuery(
-		 "SELECT strftime('%Y年%m月%d日 %H:%M', time) time,sound_file,sound_path,_id "
-		 +
-		 "FROM medical_records WHERE userid=? AND type=8 ORDER BY time DESC;",
-		 new String[] { String.valueOf(userid) });
+		return this.db
+				.rawQuery(
+						"SELECT strftime('%Y年%m月%d日 %H:%M', time) time,sound_file,sound_path,_id "
+								+ "FROM medical_records WHERE userid=? AND type=8 ORDER BY time DESC;",
+						new String[] { String.valueOf(userid) });
 	}
 
 	/**
@@ -238,5 +237,39 @@ public class DataAdapter {
 						"SELECT strftime('%Y年%m月%d日 %H:%M', time) time,sound_file,sound_path,_id "
 								+ "FROM medical_records WHERE userid=? AND type=2 ORDER BY time DESC;",
 						new String[] { String.valueOf(userid) });
+	}
+
+	/**
+	 * Get the cursor of heart sounds
+	 * 
+	 * @return
+	 */
+	public Cursor get_heart_sounds() {
+		return this.db
+				.rawQuery(
+						"SELECT "
+								+ "person.name name,person.gender gender,person.age age,"
+								+ "medical_records.sound_file sound_file,medical_records.sound_path sound_path,"
+								+ "strftime('%Y年%m月%d日 %H:%M', medical_records.time) time "
+								+ "FROM medical_records LEFT JOIN person "
+								+ "WHERE medical_records.userid=person._id and medical_records.type=8 "
+								+ "ORDER BY time DESC;", null);
+	}
+
+	/**
+	 * Get the cursor of breath sounds
+	 * 
+	 * @return
+	 */
+	public Cursor get_breath_sounds() {
+		return this.db
+				.rawQuery(
+						"SELECT "
+								+ "person.name name,person.gender gender,person.age age,"
+								+ "medical_records.sound_file sound_file,medical_records.sound_path sound_path,"
+								+ "strftime('%Y年%m月%d日 %H:%M', medical_records.time) time "
+								+ "FROM medical_records LEFT JOIN person "
+								+ "WHERE medical_records.userid=person._id and medical_records.type=2 "
+								+ "ORDER BY time DESC;", null);
 	}
 }
