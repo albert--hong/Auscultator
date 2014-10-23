@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">听诊器</string>
     <string name="action_settings">Settings</string>
     <string name="auscultation">听诊</string>
@@ -14,19 +13,13 @@
     <string name="confirm">确定</string>
     <string name="title_cancel_medical_record">您正要放弃上一次听诊......</string>
     <string name="cancel_medical_record">放弃请点击取消或者直接返回，确认放弃请点击确定</string>
-
-    <color name="white">#FFFFFF</color>
-    <color name="blue">#19A4DD</color>
-
     <string name="title_activity_auscultation">Auscultation</string>
     <string name="title_activity_breath_sounds">BreathSounds</string>
     <string name="title_activity_heart_sounds">HeartSounds</string>
     <string name="title_activity_media_records">MediaRecords</string>
     <string name="title_activity_contacts">Contacts</string>
-    
     <string name="title_dlg_save_sounds">保存类型</string>
     <string name="content_dlg_save_sounds">您希望保存为心音还是呼吸音</string>
-    
     <string name="new_medical_record">新建电子病历</string>
     <string name="name">姓名</string>
     <string name="gender">性别</string>
@@ -38,9 +31,7 @@
     <string name="hint_gender">请在此输入性别</string>
     <string name="hint_age">请在此输入年龄</string>
     <string name="hint_tel">请在此输入联系电话</string>
-    
     <string name="hint_lack_name">请输入姓名</string>
     <string name="hint_lack_gender">请输入性别</string>
     <string name="hint_lack_age">请输入年龄</string>
-
 </resources>

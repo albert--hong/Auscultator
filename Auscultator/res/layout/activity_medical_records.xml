@@ -1,216 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <!-- self title -->
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="@color/blue"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/medical_records" />
-
-        <!-- suppress AndroidDomInspection -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/medical_records"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="right" >
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/menu_icon"
-                android:visibility="gone" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@color/blue" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <ImageView android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/medical_records" />
+        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/medical_records" />
+        <LinearLayout android:gravity="right" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/menu_icon" />
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/new_medical_record"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/new_medical_record"
-        android:textSize="24sp" />
-	
-    <!-- The form for new medical record -->
-    <TableLayout
-        android:id="@+id/new_medical_record_form"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="16sp"
-        android:visibility="gone" >
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="@string/name"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/new_medical_record_name"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:hint="@string/hint_name"
-                android:textSize="16sp" />
+    <TextView android:textSize="24.0sp" android:gravity="center" android:id="@id/new_medical_record" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/new_medical_record" />
+    <TableLayout android:textSize="16.0sp" android:orientation="vertical" android:id="@id/new_medical_record_form" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TableRow android:layout_width="fill_parent" android:layout_height="30.0dip">
+            <TextView android:textSize="16.0sp" android:gravity="center" android:layout_width="100.0dip" android:layout_height="fill_parent" android:text="@string/name" />
+            <EditText android:textSize="16.0sp" android:gravity="center_vertical" android:id="@id/new_medical_record_name" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/hint_name" android:layout_weight="1.0" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="@string/gender"
-                android:textSize="16sp" />
-
-            <RadioGroup
-                android:id="@+id/new_medical_record_gender"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="2"
-                android:orientation="horizontal" >
-
-                <RadioButton
-                    android:id="@+id/female"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/female" />
-
-                <RadioButton
-                    android:id="@+id/male"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/male" />
+        <TableRow android:layout_width="fill_parent" android:layout_height="30.0dip">
+            <TextView android:textSize="16.0sp" android:gravity="center" android:layout_width="100.0dip" android:layout_height="fill_parent" android:text="@string/gender" />
+            <RadioGroup android:orientation="horizontal" android:id="@id/new_medical_record_gender" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0">
+                <RadioButton android:gravity="center" android:id="@id/female" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/female" android:layout_weight="1.0" />
+                <RadioButton android:gravity="center" android:id="@id/male" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/male" android:layout_weight="1.0" />
             </RadioGroup>
         </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="@string/age"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/new_medical_record_age"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:hint="@string/hint_age"
-                android:inputType="numberDecimal"
-                android:textSize="16sp" />
+        <TableRow android:layout_width="fill_parent" android:layout_height="30.0dip">
+            <TextView android:textSize="16.0sp" android:gravity="center" android:layout_width="100.0dip" android:layout_height="fill_parent" android:text="@string/age" />
+            <EditText android:textSize="16.0sp" android:gravity="center_vertical" android:id="@id/new_medical_record_age" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/hint_age" android:layout_weight="1.0" android:inputType="numberDecimal" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" >
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="@string/tel"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/new_medical_record_tel"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:hint="@string/hint_tel"
-                android:inputType="phone"
-                android:textSize="16sp" />
+        <TableRow android:layout_width="fill_parent" android:layout_height="30.0dip">
+            <TextView android:textSize="16.0sp" android:gravity="center" android:layout_width="100.0dip" android:layout_height="fill_parent" android:text="@string/tel" />
+            <EditText android:textSize="16.0sp" android:gravity="center_vertical" android:id="@id/new_medical_record_tel" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/hint_tel" android:layout_weight="1.0" android:inputType="phone" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/new_medical_record_cancel"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:text="@string/cancel"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+        <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <LinearLayout android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <Button android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/new_medical_record_cancel" android:background="@color/blue" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/cancel" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/new_medical_record_save"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:text="@string/save"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+            <LinearLayout android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <Button android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/new_medical_record_save" android:background="@color/blue" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/save" />
             </LinearLayout>
         </TableRow>
     </TableLayout>
-    
-	<!-- Medical Records list view -->
-    <ListView
-        android:id="@+id/medical_records_list"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@color/white" />
-
+    <ListView android:id="@id/medical_records_list" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@color/white" android:layout_weight="1.0" />
 </LinearLayout>

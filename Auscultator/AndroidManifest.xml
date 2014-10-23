@@ -1,48 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.auscultator.app" >
-
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.auscultator.app.Menu"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name" >
+<manifest package="com.auscultator.app"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:debuggable="true" android:allowBackup="true">
+        <activity android:label="@string/app_name" android:name="com.auscultator.app.Menu" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.auscultator.app.Auscultation"
-            android:label="@string/title_activity_auscultation" >
-        </activity>
-        <activity
-            android:name="com.auscultator.app.BreathSounds"
-            android:label="@string/title_activity_breath_sounds" >
-        </activity>
-        <activity
-            android:name="com.auscultator.app.HeartSounds"
-            android:label="@string/title_activity_heart_sounds" >
-        </activity>
-        <activity
-            android:name="com.auscultator.app.MedicalRecords"
-            android:label="@string/title_activity_media_records" >
-        </activity>
-        <activity
-            android:name="com.auscultator.app.MedicalRecord"
-            android:label="@string/title_activity_contacts" >
-        </activity>
+        <activity android:label="@string/title_activity_auscultation" android:name="com.auscultator.app.Auscultation" />
+        <activity android:label="@string/title_activity_breath_sounds" android:name="com.auscultator.app.BreathSounds" />
+        <activity android:label="@string/title_activity_heart_sounds" android:name="com.auscultator.app.HeartSounds" />
+        <activity android:label="@string/title_activity_media_records" android:name="com.auscultator.app.MedicalRecords" />
+        <activity android:label="@string/title_activity_contacts" android:name="com.auscultator.app.MedicalRecord" />
     </application>
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19"/>
-
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
 </manifest>

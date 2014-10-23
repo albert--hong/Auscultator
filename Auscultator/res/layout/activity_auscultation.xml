@@ -1,119 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <!-- self title -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="@color/blue"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/auscultation_icon" />
-
-        <!--suppress AndroidDomInspection -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/auscultation"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="right">
-
-            <ImageView
-                android:id="@+id/auscultation_menu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/menu_icon"
-                android:visibility="gone" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@color/blue" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <ImageView android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/auscultation_icon" />
+        <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/auscultation" />
+        <LinearLayout android:gravity="right" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/auscultation_menu" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/menu_icon" />
         </LinearLayout>
-
     </LinearLayout>
-
-    <!--  Audio animation  -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="100"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/audio"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/audio" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="100.0">
+        <ImageView android:id="@id/audio" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/audio" />
     </LinearLayout>
-
-    <!-- Play button and progress bar -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="120dp"
-        android:background="@color/blue"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/btn_recorder"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:soundEffectsEnabled="false"
-            android:src="@drawable/record" />
-
-        <!-- ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp" / -->
-
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/blue" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <ImageView android:id="@id/btn_recorder" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/record" android:soundEffectsEnabled="false" />
     </LinearLayout>
-
-    <!-- Save and Cancel button -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/auscult_cancle"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/blue"
-            android:soundEffectsEnabled="false"
-            android:text="@string/cancel"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/auscult_save"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/blue"
-            android:soundEffectsEnabled="false"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="80.0dip">
+        <Button android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/auscult_cancle" android:background="@color/blue" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginRight="10.0dip" android:text="@string/cancel" android:soundEffectsEnabled="false" />
+        <Button android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/auscult_save" android:background="@color/blue" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:text="@string/save" android:soundEffectsEnabled="false" />
     </LinearLayout>
-
 </LinearLayout>

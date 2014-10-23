@@ -1,10 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Light">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="@android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
-        <!-- item name="android:windowFullscreen">true</item> -->
     </style>
-
 </resources>

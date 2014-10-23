@@ -1,7 +1,5 @@
 package com.auscultator.app;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +38,7 @@ public class MedicalRecordAdapter extends SimpleAdapter {
     @Override 
     public View getView(int position, View convertView, ViewGroup parent) {
     	// get the view;
-    	LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE); 
+    	LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(layoutResource, null);
         
         ViewHolder views = new ViewHolder();

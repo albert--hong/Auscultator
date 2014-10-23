@@ -19,20 +19,21 @@ import com.auscultator.data.DataAdapter;
 
 public class Auscultation extends Activity {
     private final static String TAG = "AUSCULTATION";
-    private final static int ST_READY = 0;
-    private final static int ST_RECORDING = 1;
-    private final static int ST_RECORDED = 2;
-    private final static int ST_PLAYING = 4;
+    private final static int ST_READY = 0x00;
+    private final static int ST_RECORDING = 0x01;
+    private final static int ST_RECORDED = 0x02;
+    private final static int ST_PLAYING = 0x04;
 
+    // Components in this view
     private ImageView btn_recorder;
     private Button btn_save;
     private Button btn_cancel;
 
+    // Resources in this views
     private AudioRecorder audioRecorder;
-    private DataAdapter dataAdapter;
 
+    // current state
     private int record_state;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Create Auscultation View");
@@ -46,7 +47,6 @@ public class Auscultation extends Activity {
         btn_recorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Log.d(TAG, "record button");
                 // If the recorder is ready, start recording the audio.
                 if (record_state == ST_READY) {
@@ -90,11 +90,9 @@ public class Auscultation extends Activity {
                         Log.e(TAG, ErrorCode.get_error_msg(res));
                         return;
                     }
-
                     // change the status
                     record_state = ST_PLAYING;
                     btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.stop));
-
                     return;
                 }
                 // if the audio is playing, stop the playing,
@@ -105,10 +103,8 @@ public class Auscultation extends Activity {
                         Log.e(TAG, ErrorCode.get_error_msg(res));
                         return;
                     }
-
                     record_state = ST_RECORDED;
                     btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.play));
-
                     return;
                 }
 
@@ -130,10 +126,10 @@ public class Auscultation extends Activity {
 							// save the sounds to heart sounds records
 							String sound_file = audioRecorder.save(AudioRecorder.HEART_SOUNDS);
 							// open the medical records activity
-							Intent intent = new Intent();
-							intent.setClass(Auscultation.this, MedicalRecords.class);
-							intent.putExtra("sound_type", AudioRecorder.HEART_SOUNDS);
-							intent.putExtra("sound_file", sound_file);
+							Intent intent = new Intent()
+                                    .setClass(Auscultation.this, MedicalRecords.class)
+                                    .putExtra("sound_type", AudioRecorder.HEART_SOUNDS)
+                                    .putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 
 			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
@@ -146,10 +142,10 @@ public class Auscultation extends Activity {
 							// save the sounds to breath sounds records
 							String sound_file = audioRecorder.save(AudioRecorder.BREATH_SOUNDS);
 							// open the medical records activity
-							Intent intent = new Intent();
-							intent.setClass(Auscultation.this, MedicalRecords.class);
-							intent.putExtra("sound_type", AudioRecorder.BREATH_SOUNDS);
-							intent.putExtra("sound_file", sound_file);
+							Intent intent = new Intent()
+                                    .setClass(Auscultation.this, MedicalRecords.class)
+                                    .putExtra("sound_type", AudioRecorder.BREATH_SOUNDS)
+                                    .putExtra("sound_file", sound_file);
 							Auscultation.this.startActivity(intent);
 			                // restore the view's status. 
 			                btn_recorder.setImageDrawable(getResources().getDrawable(R.drawable.record));
@@ -201,7 +197,5 @@ public class Auscultation extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-
-
     }
 }

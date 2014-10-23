@@ -46,7 +46,6 @@ public class HeartSounds extends Activity {
 						R.id.sound_record_img });
 
 		listView.setAdapter(adapter);
-		
 
 		this.audio_player = new AudioPlayer();
 		// add listener
