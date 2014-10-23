@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <sounds type="heart">
+        <directory name="benmalv" path="heart/benmalv/" tag="奔马律">
+            <audio name="huochetoubenmalv" path="heart/benmalv/huochetoubenmalv.mp3"
+                tag="火车头奔马律">
+            </audio>
+            <audio name="xinshishuzhangqiewaiyinshousuoqiqianbenmalv" path="heart/benmalv/xinshishuzhangqiewaiyinshousuoqiqianbenmalv.mp3"
+                tag="心室舒张期额外音收缩期前奔马律">
+            </audio>
+            <audio name="xinshishuzhangqiewaiyinshuzhangqibenmalv" path="heart/benmalv/xinshishuzhangqiewaiyinshuzhangqibenmalv.mp3"
+                tag="心室舒张期额外音舒张期奔马律" >
+            </audio>
+            <audio name="chongdiexingbenmalv_1" path="heart/benmalv/chongdiexingbenmalv_1.mp3"
+                tag="重叠性奔马律 (1)">
+            </audio>
+            <audio name="chongdiexingbenmalv_2" path="heart/benmalv/chongdiexingbenmalv_2.mp3"
+                tag="重叠性奔马律 (2)">
+            </audio>
+        </directory>
+        <directory name="dierxinyin" path="heart/dierxinyin/" tag="第二心音">
+            <audio name="S2gudingfenlie" path="heart/dierxinyin/S2gudingfenlie.mp3" tag="S2固定分裂">
+            </audio>
+            <audio name="S2tongchangfenlie" path="heart/dierxinyin/S2tongchangfenlie.mp3" tag="S2通常分裂">
+            </audio>
+            <audio name="dierxinyinfenlie" path="heart/dierxinyin/dierxinyinfenlie.mp3" tag="第二心音分裂">
+            </audio>
+            <audio name="dierxinyinjianruo" path="heart/dierxinyin/dierxinyinjianruo.mp3" tag="第二心音减弱">
+            </audio>
+            <audio name="no2_heart_enhance_1" path="heart/dierxinyin/no2_heart_enhance_1.mp3" tag="第二心音增强 (1)">
+            </audio>
+            <audio name="no2_heart_enhance_2" path="heart/dierxinyin/no2_heart_enhance_2.mp3" tag="第二心音增强 (2)">
+            </audio>
+            <audio name="no2_heart_enhance_3" path="heart/dierxinyin/no2_heart_enhance_3.mp3" tag="第二心音增强 (3)">
+            </audio>
+            <audio name="feidongmaiqu_no2_heart_enhance" path="heart/dierxinyin/feidongmaiqu_no2_heart_enhance.mp3" tag="肺动脉区第二心音增强">
+            </audio>
+            <audio name="shenglixing_no2_heart_break" path="heart/dierxinyin/shenglixing_no2_heart_break.mp3" tag="生理性第二心音分裂">
+            </audio>
+            <audio name="yichangxing_no2_heart_break" path="heart/dierxinyin/yichangxing_no2_heart_break.mp3" tag="异常第二心音分裂">
+            </audio>
+            <audio name="normal_heart_sound" path="heart/dierxinyin/normal_heart_sound.mp3" tag="正常的第二心音">
+            </audio>
+        </directory>
+        <directory name="disanxinyin" path="heart/disanxinyin/" tag="第三心音">
+            <audio name="binglixing_S3" path="heart/disanxinyin/binglixing_S3.mp3" tag="病理性S3">
+            </audio>
+            <audio name="disanxinyin" path="heart/disanxinyin/disanxinyin.mp3" tag="第三心音">
+            </audio>
+        </directory>
+        <directory name="disixinyin" path="heart/disixinyin/" tag="第四心音">
+            <audio name="disixinyin" path="heart/disixinyin/disixinyin.mp3" tag="第四心音">
+            </audio>
+        </directory>
+        <directory name="diyixinyin" path="heart/diyixinyin/" tag="第一心音">
+            <audio name="S1_fenlie" path="heart/diyixinyin/S1_fenlie.mp3" tag="S1分裂">
+            </audio>
+            <audio name="dapaoyin" path="heart/diyixinyin/dapaoyin.mp3" tag="大炮音(第一心音增强)">
+            </audio>
+            <audio name="diyixinyinfenlie_1" path="heart/diyixinyin/diyixinyinfenlie_1.mp3" tag="第一心音分裂 (1)">
+            </audio>
+            <audio name="diyixinyinfenlie_2" path="heart/diyixinyin/diyixinyinfenlie_2.mp3" tag="第一心音分裂 (2)">
+            </audio>
+            <audio name="diyixinyinjianruo_1" path="heart/diyixinyin/diyixinyinjianruo_1.mp3" tag="第一心音减弱 (1)">
+            </audio>
+            <audio name="diyixinyinjianruo_2" path="heart/diyixinyin/diyixinyinjianruo_2.mp3" tag="第一心音减弱 (2)">
+            </audio>
+            <audio name="S1_fenglie" path="heart/diyixinyin/S1_fenglie.mp3" tag="S1分裂">
+            </audio>
+            <audio name="diyixinyinzengqiang_1" path="heart/diyixinyin/diyixinyinzengqiang_1.mp3" tag="第一心音增强 (1)">
+            </audio>
+            <audio name="diyixinyinzengqiang_2" path="heart/diyixinyin/diyixinyinzengqiang_2.mp3" tag="第一心音增强 (2)">
+            </audio>
+            <audio name="diyixinyinzengqiang_3" path="heart/diyixinyin/diyixinyinzengqiang_3.mp3" tag="第一心音增强 (3)">
+            </audio>
+            <audio name="diyixinyinkangjin" path="heart/diyixinyin/diyixinyinkangjin.mp3" tag="完全性房室传导阻滞第一心音亢进">
+            </audio>
+            <audio name="zhengchang_diyixinyin" path="heart/diyixinyin/zhengchang_diyixinyin.mp3" tag="正常的第一心音 ">
+            </audio>
+        </directory>
+        <directory name="erjianban" path="heart/erjianban/" tag="二尖瓣">
+            <audio name="erbierxia_SM_DM" path="heart/erjianban/erbierxia_SM_DM.mp3" tag="二闭二狭SM+DM">
+            </audio>
+            <audio name="erbifanliuxing_SM" path="heart/erjianban/erbifanliuxing_SM.mp3" tag="二闭返流性SM">
+            </audio>
+            <audio name="erjianban_guanbibuquan" path="heart/erjianban/erjianban_guanbibuquan.mp3" tag="二尖瓣关闭不全（S1减弱）">
+            </audio>
+            <audio name="erjianban_kaibanyin" path="heart/erjianban/erjianban_kaibanyin.mp3" tag="二尖瓣开瓣音">
+            </audio>
+            <audio name="erjianban_kaifangpaijiyin" path="heart/erjianban/erjianban_kaifangpaijiyin.mp3" tag="二尖瓣开放拍击音">
+            </audio>
+            <audio name="erjianban_xiazhai_S1_zengqiang" path="heart/erjianban/erjianban_xiazhai_S1_zengqiang.mp3" tag="二尖瓣狭窄（S1增强）">
+            </audio>
+            <audio name="erjianban_xiazhai_guanbibuquan" path="heart/erjianban/erjianban_xiazhai_guanbibuquan.mp3" tag="二尖瓣狭窄并关闭不全">
+            </audio>
+            <audio name="erjianban_xiazhai_diyixinyinkangjin" path="heart/erjianban/erjianban_xiazhai_diyixinyinkangjin.mp3" tag="二尖瓣狹窄的第一心音亢进并开瓣音">
+            </audio>
+            <audio name="erxia_chongyingxing_DM" path="heart/erjianban/erxia_chongyingxing_DM.mp3" tag="二狭充盈性DM">
+            </audio>
+            <audio name="erxia_kaibanyin_DM" path="heart/erjianban/erxia_kaibanyin_DM.mp3" tag="二狭开瓣音DM">
+            </audio>
+            <audio name="erxia_longlongyang_DM_AF" path="heart/erjianban/erxia_longlongyang_DM_AF.mp3" tag="二狭隆隆样DM+AF">
+            </audio>
+            <audio name="kaibanyin" path="heart/erjianban/kaibanyin.mp3" tag="开瓣音">
+            </audio>
+        </directory>
+        <directory name="fujia_xinyin" path="heart/fujia_xinyin/" tag="附加心音（额外心音）">
+            <directory name="shousuoqi" path="heart/fujia_xinyin/shousuoqi" tag="收缩期额外音">
+                <directory name="shousuozaoqi" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi" tag="收缩早期额外音">
+                    <audio name="pensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/pensheyin.mp3" tag="喷射音">
+                    </audio>
+                    <audio name="feidongmaipensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/feidongmaipensheyin.mp3" tag="收缩早期额外音肺动脉喷射音">
+                    </audio>
+                    <audio name="zhudongmaipensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/zhudongmaipensheyin.mp3" tag="收缩早期额外音主动脉喷射音">
+                    </audio>
+                    <audio name="feidongmai_shousuo_pensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/feidongmai_shousuo_pensheyin.mp3" tag="收缩早期喀喇音-肺动脉收缩喷射音">
+                    </audio>
+                    <audio name="zhudongmai_shousuo_pensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/zhudongmai_shousuo_pensheyin.mp3" tag="收缩早期喀喇音-主动脉收缩喷射音">
+                    </audio>
+                    <audio name="shuosuozaoqipensheyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/shuosuozaoqipensheyin.mp3" tag="收缩早期喷射音">
+                    </audio>
+                    <audio name="zaoqi_xinzang_shousuoyin" path="heart/fujia_xinyin/shousuoqi/shousuozaoqi/zaoqi_xinzang_shousuoyin.mp3" tag="早期心脏收缩音">
+                    </audio>
+                </directory>
+                <directory name="shousuozhongwanqi" path="heart/fujia_xinyin/shousuoqi/shousuozhongwanqi" tag="收缩中晚期喀喇音">
+                    <audio name="cucao_keca" path="heart/fujia_xinyin/shousuoqi/shousuozhongwanqi/cucao_keca.mp3" tag="粗糙的喀喇音">
+                    </audio>
+                    <audio name="keca_1" path="heart/fujia_xinyin/shousuoqi/shousuozhongwanqi/keca_1.mp3" tag="收缩中晚期喀喇音 (1)">
+                    </audio>
+                    <audio name="keca_2" path="heart/fujia_xinyin/shousuoqi/shousuozhongwanqi/keca_2.mp3" tag="收缩中晚期喀喇音 (2)">
+                    </audio>
+                    <audio name="wanqi_xinzang_shousuo" path="heart/fujia_xinyin/shousuoqi/shousuozhongwanqi/wanqi_xinzang_shousuo.mp3" tag="晚期心脏收缩音">
+                    </audio>
+                </directory>
+                <audio name="quanxinzang_shousuoyin" path="heart/fujia_xinyin/shousuoqi/quanxinzang_shousuoyin.mp3" tag="全心脏收缩音">
+                </audio>
+                <audio name="shijiangequesun" path="heart/fujia_xinyin/shousuoqi/shijiangequesun.mp3" tag="室间隔缺损">
+                </audio>
+                <audio name="shique" path="heart/fujia_xinyin/shousuoqi/shique.mp3" tag="室缺">
+                </audio>
+                <audio name="shousuoqi_qizhixingzayin_erjianbanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_qizhixingzayin_erjianbanqu.mp3" tag="收缩期器质性杂音二尖瓣区">
+                </audio>
+                <audio name="shousuoqi_qizhixingzayin_feidongmaibanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_qizhixingzayin_feidongmaibanqu.mp3" tag="收缩期器质性杂音肺动脉瓣区">
+                </audio>
+                <audio name="shousuoqi_qizhixingzayin_shijiangequesun" path="heart/fujia_xinyin/shousuoqi/shousuoqi_qizhixingzayin_shijiangequesun.mp3" tag="收缩期器质性杂音室间隔缺损">
+                </audio>
+                <audio name="shousuoqi_qizhixingzayin_zhudongmaibanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_qizhixingzayin_zhudongmaibanqu.mp3" tag="收缩期器质性杂音主动脉瓣区">
+                </audio>
+                <audio name="shousuoqi_shenglixingzayin_feidongmaibanqu" path="heart/fujia_xinyin/shousuoqi//shousuoqi_shenglixingzayin_feidongmaibanqu.mp3" tag="收缩期生理性杂音肺动脉瓣区">
+                </audio>
+                <audio name="shousuoqi_xiangduiquzayin_sanjianbanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_xiangduiquzayin_sanjianbanqu.mp3" tag="收缩期相对性杂音三尖瓣区">
+                </audio>
+            </directory>
+            <directory name="shuzhangqi" path="heart/fujia_xinyin/shuzhangqi/" tag="舒张期额外音">
+                <audio name="benmalv" path="heart/fujia_xinyin/shuzhangqi/benmalv.mp3" tag="舒张期奔马律">
+                </audio>
+                <audio name="longlongyin" path="heart/fujia_xinyin/shuzhangqi/longlongyin.mp3" tag="舒张期隆隆音">
+                </audio>
+                <audio name="qizhixing_zayin_erjianbanqu" path="heart/fujia_xinyin/shuzhangqi/qizhixing_zayin_erjianbanqu.mp3" tag="舒张期器质性杂音二尖瓣区">
+                </audio>
+                <audio name="qizhixing_zayin_zhudongmaibanqu" path="heart/fujia_xinyin/shuzhangqi/qizhixing_zayin_zhudongmaibanqu.mp3" tag="舒张期器质性杂音主动脉瓣区">
+                </audio>
+            </directory>
+        </directory>
+        <directory name="others" path="heart/others/" tag="其他">
+            <directory name="xinbaomocayin" path="heart/others/xinbaomocayin/" tag="心包摩擦音">
+                <audio name="mocayin_1" path="heart/others/xinbaomocayin/mocayin_1.mp3" tag="心包摩擦音 (1)">
+                </audio>
+                <audio name="mocayin_2" path="heart/others/xinbaomocayin/mocayin_2.mp3" tag="心包摩擦音 (2)">
+                </audio>
+            </directory>
+            <directory name="zaobo" path="heart/others/zaobo/" tag="早搏">
+                <audio name="zaobo" path="heart/others/zaobo/zaobo.mp3" tag="早搏">
+                </audio>
+                <audio name="guozaobodong" path="heart/others/zaobo/guozaobodong.mp3" tag="过早博动">
+                </audio>
+            </directory>
+            <audio name="dongxing_xinlvbuqi" path="heart/others/dongxing_xinlvbuqi.mp3" tag="窦性心律不齐">
+            </audio>
+            <audio name="fangchan" path="heart/others/fangchan.mp3" tag="房颤">
+            </audio>
+            <audio name="yueyin" path="heart/others/yueyin.mp3" tag="乐音">
+            </audio>
+            <audio name="shizao_erlianlv" path="heart/others/shizao_erlianlv.mp3" tag="室早二联律">
+            </audio>
+            <audio name="shenglixing_zayin" path="heart/others/shenglixing_zayin.mp3" tag="心脏生理性杂音">
+            </audio>
+        </directory>
+        <directory name="normal" path="heart/normal/" tag="正常心音">
+            <audio name="normal_1" path="heart/normal/normal_1.mp3" tag="正常心音 (1)">
+            </audio>
+            <audio name="normal_2" path="heart/normal/normal_2.mp3" tag="正常心音 (2)">
+            </audio>
+            <audio name="normal_3" path="heart/normal/normal_3.mp3" tag="正常心音 (3)">
+            </audio>
+            <audio name="normal_4" path="heart/normal/normal_4.mp3" tag="正常心音 (4)">
+            </audio>
+        </directory>
+        <directory name="zhudongmaiban" path="heart/zhudongmaiban/" tag="主动脉瓣">
+            <audio name="dongmaidaoguanweibi" path="heart/zhudongmaiban/dongmaidaoguanweibi.mp3" tag="动脉导管未闭">
+            </audio>
+            <audio name="dongmaidaoguanweibi_PDA" path="heart/zhudongmaiban/dongmaidaoguanweibi_PDA.mp3" tag="动脉导管未闭PDA">
+            </audio>
+            <audio name="zhubifanliuxing_DM" path="heart/zhudongmaiban/zhubifanliuxing_DM.mp3" tag="主闭返流性DM">
+            </audio>
+            <audio name="guanbibuquan_1" path="heart/zhudongmaiban/guanbibuquan_1.mp3" tag="主动脉瓣关闭不全 (1)">
+            </audio>
+            <audio name="guanbibuquan_2" path="heart/zhudongmaiban/guanbibuquan_2.mp3" tag="主动脉瓣关闭不全 (2)">
+            </audio>
+            <audio name="xiazhai_1" path="heart/zhudongmaiban/xiazhai_1.mp3" tag="主动脉瓣狭窄 (1)">
+            </audio>
+            <audio name="xiazhai_2" path="heart/zhudongmaiban/xiazhai_2.mp3" tag="主动脉瓣狭窄 (2)">
+            </audio>
+            <audio name="xiazhai_guanbibuquan" path="heart/zhudongmaiban/xiazhai_guanbibuquan.mp3" tag="主动脉瓣狭窄并关闭不全">
+            </audio>
+            <audio name="zhuxiapenshexingSM" path="heart/zhudongmaiban/zhuxiapenshexingSM.mp3" tag="主狭喷射性SM">
+            </audio>
+        </directory>
+    </sounds>
+
+    <sounds type="lung">
+        <directory name="ganxingluoyin" path="lung/ganxingluoyin/" tag="干性罗音">
+            <audio name="ganluoyin" path="lung/ganxingluoyin/ganluoyin.mp3" tag="干罗音">
+            </audio>
+        </directory>
+        <directory name="shixingluoyin" path="lung/shixingluoyin/" tag="湿性罗音">
+            <audio name="nianfayin" path="lung/ganxingluoyin/nianfayin.mp3" tag="湿罗音捻发音">
+            </audio>
+            <audio name="xiaoshuipaoyin" path="lung/ganxingluoyin/xiaoshuipaoyin.mp3" tag="湿罗音小水泡音">
+            </audio>
+            <audio name="zhongshuipaoyin" path="lung/ganxingluoyin/zhongshuipaoyin.mp3" tag="湿罗音中水泡音">
+            </audio>
+        </directory>
+        <directory name="xiongmo_mocayin" path="lung/xiongmo_mocayin/" tag="胸膜摩擦音">
+            <audio name="mocayin_1" path="lung/xiongmo_mocayin/mocayin_1.mp3" tag="胸膜摩擦音 (1)">
+            </audio>
+            <audio name="mocayin_2" path="lung/xiongmo_mocayin/mocayin_2.mp3" tag="胸膜摩擦音 (2)">
+            </audio>
+        </directory>
+        <audio name="chuanxiyin" path="lung/chuanxiyin.mp3" tag="喘息音">
+        </audio>
+        <audio name="feipaohuxiyin" path="lung/feipaohuxiyin.mp3" tag="肺泡呼吸音">
+        </audio>
+        <audio name="xiqixiang" path="lung/xiqixiang.mp3" tag="吸气相">
+        </audio>
+        <audio name="normal" path="lung/normal.mp3" tag="正常的呼吸音">
+        </audio>
+        <audio name="zhiqiguan_huxiyin" path="lung/zhiqiguan_huxiyin.mp3" tag="支气管呼吸音">
+        </audio>
+    </sounds>
+</resources>

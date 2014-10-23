@@ -52,7 +52,9 @@ public class Auscultation extends Activity {
                 if (record_state == ST_READY) {
                     int res = audioRecorder.startRecording();
                     if (res != ErrorCode.SUCCESS) {
-                        Toast.makeText(getApplicationContext(), ErrorCode.get_error_msg(res), Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(),
+                                ErrorCode.get_error_msg(res), Toast.LENGTH_SHORT)
+                                .show();
                         Log.e(TAG, ErrorCode.get_error_msg(res));
                         return;
                     }
@@ -65,7 +67,9 @@ public class Auscultation extends Activity {
                 else if (record_state == ST_RECORDING) {
                     int res = audioRecorder.stopRecording();
                     if (res != ErrorCode.SUCCESS) {
-                    	Toast.makeText(getApplicationContext(), ErrorCode.get_error_msg(res), Toast.LENGTH_SHORT);
+                    	Toast.makeText(getApplicationContext(),
+                                ErrorCode.get_error_msg(res),
+                                Toast.LENGTH_SHORT).show();
                         Log.e(TAG, ErrorCode.get_error_msg(res));
                         return;
                     }
