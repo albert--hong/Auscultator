@@ -1,5 +1,12 @@
 package com.auscultator.data;
 
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.MediaPlayer;
+import android.nfc.Tag;
+import android.util.Log;
+import android.widget.Toast;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -18,7 +25,28 @@ public class SAX_AudioTagService {
     private AudioTag heartSounds;
     private AudioTag breathSounds;
 
-    public boolean parse(InputStream inputStream) throws Throwable {
+    static private SAX_AudioTagService instance;
+
+    private SAX_AudioTagService() {
+
+    }
+
+    static public void initialize(InputStream ins) {
+        if (instance == null) {
+            instance = new SAX_AudioTagService();
+            try {
+                instance.parse(ins);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }
+    }
+
+    static public SAX_AudioTagService getInstance() {
+        return instance;
+    }
+
+    private boolean parse(InputStream inputStream) throws Throwable {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         AudioTagHandler handler = new AudioTagHandler();
@@ -31,19 +59,45 @@ public class SAX_AudioTagService {
         return true;
     }
 
-    public List<AudioTag> getHeartSounds() {
-        return isParse ? heartSounds.getChildren() : null;
+    public AudioTag getHeartSounds() {
+        return isParse ? heartSounds : null;
     }
 
-    public List<AudioTag> getBreathSounds() {
-        return isParse ? breathSounds.getChildren() : null;
+    public AudioTag getBreathSounds() {
+        return isParse ? breathSounds : null;
+    }
+
+    @Deprecated
+    public void test(AssetManager assets) {
+        iteratorTree(heartSounds, assets);
+    }
+    @Deprecated
+    private void iteratorTree(AudioTag tree, AssetManager assets) {
+        if (tree == null || tree.getChildren() == null) return;
+        MediaPlayer testPlayer = new MediaPlayer();
+
+        for (AudioTag node : tree.getChildren()) {
+            if (node.isDir()) {
+                iteratorTree(node, assets);
+            } else {
+                try {
+                    testPlayer.reset();
+                    AssetFileDescriptor fd = assets.openFd(node.getPath());
+                    testPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    testPlayer.prepare();
+                } catch (Exception e){
+                    Log.e("Invalid File", node.getPath());
+                }
+            }
+        }
+        testPlayer.reset();
     }
 
     private class AudioTagHandler extends DefaultHandler {
         private String TAG_SOUNDS = "sounds";
         private String ATTR_SOUNDS_TYPE = "type";
         private String ATTR_SOUNDS_TYPE_HEART = "heart";
-        private String ATTR_SOUNDS_TYPE_BREATH = "breath";
+        private String ATTR_SOUNDS_TYPE_BREATH = "lung";
         private String TAG_DIRECTORY = "directory";
         private String TAG_AUDIO = "audio";
         private String ATTR_NAME = "name";

@@ -9,7 +9,7 @@
                 tag="心室舒张期额外音收缩期前奔马律">
             </audio>
             <audio name="xinshishuzhangqiewaiyinshuzhangqibenmalv" path="heart/benmalv/xinshishuzhangqiewaiyinshuzhangqibenmalv.mp3"
-                tag="心室舒张期额外音舒张期奔马律" >
+                tag="心室舒张期额外音舒张期奔马律" >`
             </audio>
             <audio name="chongdiexingbenmalv_1" path="heart/benmalv/chongdiexingbenmalv_1.mp3"
                 tag="重叠性奔马律 (1)">
@@ -64,8 +64,6 @@
             <audio name="diyixinyinjianruo_1" path="heart/diyixinyin/diyixinyinjianruo_1.mp3" tag="第一心音减弱 (1)">
             </audio>
             <audio name="diyixinyinjianruo_2" path="heart/diyixinyin/diyixinyinjianruo_2.mp3" tag="第一心音减弱 (2)">
-            </audio>
-            <audio name="S1_fenglie" path="heart/diyixinyin/S1_fenglie.mp3" tag="S1分裂">
             </audio>
             <audio name="diyixinyinzengqiang_1" path="heart/diyixinyin/diyixinyinzengqiang_1.mp3" tag="第一心音增强 (1)">
             </audio>
@@ -146,7 +144,7 @@
                 </audio>
                 <audio name="shousuoqi_qizhixingzayin_zhudongmaibanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_qizhixingzayin_zhudongmaibanqu.mp3" tag="收缩期器质性杂音主动脉瓣区">
                 </audio>
-                <audio name="shousuoqi_shenglixingzayin_feidongmaibanqu" path="heart/fujia_xinyin/shousuoqi//shousuoqi_shenglixingzayin_feidongmaibanqu.mp3" tag="收缩期生理性杂音肺动脉瓣区">
+                <audio name="shousuoqi_shenglixingzayin_feidongmaibanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_shenglixingzayin_feidongmaibanqu.mp3" tag="收缩期生理性杂音肺动脉瓣区">
                 </audio>
                 <audio name="shousuoqi_xiangduiquzayin_sanjianbanqu" path="heart/fujia_xinyin/shousuoqi/shousuoqi_xiangduiquzayin_sanjianbanqu.mp3" tag="收缩期相对性杂音三尖瓣区">
                 </audio>
@@ -224,11 +222,11 @@
             </audio>
         </directory>
         <directory name="shixingluoyin" path="lung/shixingluoyin/" tag="湿性罗音">
-            <audio name="nianfayin" path="lung/ganxingluoyin/nianfayin.mp3" tag="湿罗音捻发音">
+            <audio name="nianfayin" path="lung/shixingluoyin/nianfayin.mp3" tag="湿罗音捻发音">
             </audio>
-            <audio name="xiaoshuipaoyin" path="lung/ganxingluoyin/xiaoshuipaoyin.mp3" tag="湿罗音小水泡音">
+            <audio name="xiaoshuipaoyin" path="lung/shixingluoyin/xiaoshuipaoyin.mp3" tag="湿罗音小水泡音">
             </audio>
-            <audio name="zhongshuipaoyin" path="lung/ganxingluoyin/zhongshuipaoyin.mp3" tag="湿罗音中水泡音">
+            <audio name="zhongshuipaoyin" path="lung/shixingluoyin/zhongshuipaoyin.mp3" tag="湿罗音中水泡音">
             </audio>
         </directory>
         <directory name="xiongmo_mocayin" path="lung/xiongmo_mocayin/" tag="胸膜摩擦音">

@@ -8,5 +8,5 @@
             <ImageView android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/menu_icon" />
         </LinearLayout>
     </LinearLayout>
-    <ListView android:id="@id/listView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <ListView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </LinearLayout>

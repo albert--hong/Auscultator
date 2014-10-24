@@ -94,9 +94,9 @@ public class MedicalRecord extends Activity {
 				new String[] { "time" }, new int[] { R.id.heart_record_time },
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 		list_heart_sound_record_time.setAdapter(heart_sound_adapter);
-		
+
 		// audio player
-		audioPlayer = new AudioPlayer();
+		audioPlayer = AudioPlayer.getInstance();
 
 		// set listeners
 		list_heart_sound_record_time

@@ -2,11 +2,17 @@ package com.auscultator.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.auscultator.data.SAX_AudioTagService;
+
+import java.io.InputStream;
 
 
 public class Menu extends Activity {
@@ -36,6 +42,8 @@ public class Menu extends Activity {
         breathSounds = (ImageView) findViewById(R.id.btn_breath_sounds);
         heartSounds = (ImageView) findViewById(R.id.btn_heart_sounds);
         mediaRecords = (ImageView) findViewById(R.id.btn_medical_records);
+
+        initializeApplication();
 
         // add listeners to components
         auscultation.setOnClickListener(new View.OnClickListener() {
@@ -82,5 +90,15 @@ public class Menu extends Activity {
                 Menu.this.startActivity(intent);
             }
         });
+    }
+
+    private void initializeApplication() {
+        // Get the heart sounds' list from library
+        int resId = getResources().getIdentifier("audiotags", "raw", getPackageName());
+        if (resId == 0) {
+            Toast.makeText(getApplicationContext(), "软件被损坏", Toast.LENGTH_SHORT).show();
+        }
+        InputStream ins = getResources().openRawResource(resId);
+        SAX_AudioTagService.initialize(ins);
     }
 }
