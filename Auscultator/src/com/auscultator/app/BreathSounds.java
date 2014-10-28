@@ -39,6 +39,7 @@ public class BreathSounds extends Activity {
     private AudioTag breathSoundsLib;
 
     private AudioPlayer audioPlayer;
+    private int playingSoundID = -1;
 
     private AssetManager assets;
     private AssetFileDescriptor fd;
@@ -69,12 +70,18 @@ public class BreathSounds extends Activity {
                     String soundPath = (String)item.get("sound_path");
                     try {
                         fd = assets.openFd(soundPath);
-                        audioPlayer.play(fd, null);
+                        if (playingSoundID != position) {
+                            audioPlayer.play(fd, null);
+                            playingSoundID = position;
+                        } else {
+                            audioPlayer.playOrPause();
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else if (imgType == R.drawable.sound_folder) {
                     // directory
+
                     String dirPath = (String) item.get("sound_name");
                     List<AudioTag> children = breathSoundsLib.getChildren();
                     AudioTag child;
@@ -93,6 +100,12 @@ public class BreathSounds extends Activity {
 			}
 		});
 	}
+
+    @Override
+    protected void onStop() {
+        resetPlayer();
+        super.onStop();
+    }
 
     private List<Map<String, Object>> getDataList(AudioTag breathSoundsLib) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -145,31 +158,9 @@ public class BreathSounds extends Activity {
     }
 
 
-    @Deprecated
-    private List<Map<String, Object>> get_data_list(Cursor cursor) {
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-
-		for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-			Map<String, Object> data = new HashMap<String, Object>();
-			String tmp;
-			data.put("name", cursor.getString(cursor.getColumnIndex("name")));
-			tmp = ((int)cursor.getInt(cursor.getColumnIndex("gender"))==0) ? "女" : "男" ;
-			data.put("gender", tmp);
-			tmp = ((Integer)cursor.getInt(cursor.getColumnIndex("age"))).toString();
-			data.put("age", tmp);
-			data.put("time", cursor.getString(cursor.getColumnIndex("time")));
-			if (cursor.getPosition() % 2 == 1) {
-				data.put("img", R.drawable.sound_folder);
-			} else {
-				data.put("img", R.drawable.sound);
-			}
-
-			data.put("sound_file", cursor.getString(cursor.getColumnIndex("sound_file")));
-			data.put("sound_path", cursor.getString(cursor.getColumnIndex("sound_path")));
-			
-			list.add(data);
-		}
-		return list;
-	}
+    private void resetPlayer() {
+        this.audioPlayer.reset();
+        this.playingSoundID = -1;
+    }
 
 }
