@@ -39,7 +39,7 @@ public class Auscultation extends Activity {
         Log.d(TAG, "Create Auscultation View");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auscultation);
-        /* Get the view in activity */
+        /* Get the elements in view */
         btn_recorder = (ImageView) findViewById(R.id.btn_recorder);
         btn_save = (Button) findViewById(R.id.auscult_save);
         btn_cancel = (Button) findViewById(R.id.auscult_cancle);
@@ -129,7 +129,7 @@ public class Auscultation extends Activity {
 						public void onClick(DialogInterface arg0, int arg1) {
 							// save the sounds to heart sounds records
 							String sound_file = audioRecorder.save(AudioRecorder.HEART_SOUNDS);
-							// open the medical records activity
+							// open the medical records view
 							Intent intent = new Intent()
                                     .setClass(Auscultation.this, MedicalRecords.class)
                                     .putExtra("sound_type", AudioRecorder.HEART_SOUNDS)

@@ -3,4 +3,5 @@
     <color name="black_overlay">#66000000</color>
     <color name="white">#ffffffff</color>
     <color name="blue">#ff19a4dd</color>
+    <color name="gray">#bababaff</color>
 </resources>

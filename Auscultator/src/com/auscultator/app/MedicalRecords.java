@@ -8,7 +8,10 @@ import com.auscultator.audio.AudioRecorder;
 import com.auscultator.data.DataAdapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,7 +26,19 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * 电子病历页面，展示电子病历。
+ * 1. 新建电子病历入口
+ * 2. 电子病历列表
+ *
+ * @author hongyan
+ */
 public class MedicalRecords extends Activity {
+    /* The state of this Activity */
+    final static private int TARGET_SAVE_RECORD = 0x01;
+    final static private int TARGET_VIEW_RECORD = 0x02;
+
+    private int target;
     // The components in the view;
     protected TextView new_medical_record;
     protected TableLayout new_medical_record_form;
@@ -36,69 +51,54 @@ public class MedicalRecords extends Activity {
     protected EditText new_medical_record_tel;
 
     // References
-    private DataAdapter dataAdapter;
+    protected DataAdapter dataAdapter;
     // The type of sound to save;
-    private int sound_type;
+    protected int sound_type;
     // The audio file of sound
-    private String sound_file;
+    protected String sound_file;
     // The data of the medical records
-    private List<Map<String, Object>> medical_records;
-    private MedicalRecordAdapter medical_records_adpter;
+    protected List<Map<String, Object>> medical_records;
+    protected MedicalRecordAdapter medical_records_adpter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_records);
 
-        // Get the parameter
-        Intent intent = getIntent();
-        int type = intent.getIntExtra("sound_type", 0);
-        if (type != 0) {
-            // TODO: magic numbers
-            if (type == AudioRecorder.BREATH_SOUNDS) {
-                this.sound_type = 2;
-            } else if (type == AudioRecorder.HEART_SOUNDS) {
-                this.sound_type = 8;
-            } else {
-                this.sound_type = type;
-            }
-            this.sound_file = intent.getStringExtra("sound_file");
-            if (null == this.sound_file) {
-                MedicalRecords.this.finish();
-            }
-        }
+        // Get the parameter of this activity.
+        this.getParameter();
+
         // Get the view's elements;
-        new_medical_record = (TextView) findViewById(R.id.new_medical_record);
-        new_medical_record_form = (TableLayout) findViewById(R.id.new_medical_record_form);
-        new_medical_record_cancel = (Button) findViewById(R.id.new_medical_record_cancel);
-        new_medical_record_save = (Button) findViewById(R.id.new_medical_record_save);
-        medical_records_list = (ListView) findViewById(R.id.medical_records_list);
-        new_medical_record_name = (EditText) findViewById(R.id.new_medical_record_name);
-        new_medical_record_gender = (RadioGroup) findViewById(R.id.new_medical_record_gender);
-        new_medical_record_age = (EditText) findViewById(R.id.new_medical_record_age);
-        new_medical_record_tel = (EditText) findViewById(R.id.new_medical_record_tel);
+        this.getElements();
 
 		/* Get the medical records from database; */
-        SQLiteDatabase db = openOrCreateDatabase("auscultation.db",
-                Context.MODE_PRIVATE, null);
-        dataAdapter = DataAdapter.getInstance(db);
+        dataAdapter = DataAdapter.getInstance();
         medical_records = dataAdapter.get_medical_records();
         this.medical_records_adpter = new MedicalRecordAdapter(this,
                 medical_records, R.layout.item_medical_record, null, null);
         medical_records_list.setAdapter(medical_records_adpter);
 
-        /* The listener for create new medical record */
+        /* 新建电子病历按钮按下 */
         new_medical_record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                if (new_medical_record_form.getVisibility() == View.VISIBLE) {
-                    new_medical_record_form.setVisibility(View.GONE);
+                if (target == TARGET_VIEW_RECORD) {
+                    Intent intent = new Intent()
+                            .putExtra("target", ActivityEditRecord.TARGET_NEW);
+                    intent.setClass(MedicalRecords.this, ActivityEditRecord.class);
+                    MedicalRecords.this.startActivity(intent);
+
                 } else {
-                    new_medical_record_form.setVisibility(View.VISIBLE);
+                    if (new_medical_record_form.getVisibility() == View.VISIBLE) {
+                        new_medical_record_form.setVisibility(View.GONE);
+                    } else {
+                        new_medical_record_form.setVisibility(View.VISIBLE);
+                    }
+
                 }
             }
         });
-        /* The listener for saving medical record */
+        /* 保存电子病历按钮按下 */
         new_medical_record_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -164,9 +164,7 @@ public class MedicalRecords extends Activity {
                 MedicalRecords.this.finish();
             }
         });
-        /**
-         * The listener for canceling to save.
-         */
+        /* 取消保存电子病历 */
         new_medical_record_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -183,7 +181,7 @@ public class MedicalRecords extends Activity {
                                     View itemClicked, int position, long id) {
                 Map<String, Object> medical_record = medical_records
                         .get((int) id);
-                // The click is want to read the medical record
+                // 打开一个电子病历
                 if (sound_type == 0) {
                     Intent intent = new Intent()
                             .putExtra("userid", (Integer) medical_record.get("userid"))
@@ -194,7 +192,7 @@ public class MedicalRecords extends Activity {
 
                     intent.setClass(MedicalRecords.this, MedicalRecord.class);
                     MedicalRecords.this.startActivity(intent);
-                } // The click is want to create a medical record
+                } // 保存一个电子病历
                 else {
                     Integer userid = medical_record
                             .containsKey("userid") ? (Integer) medical_record
@@ -213,12 +211,95 @@ public class MedicalRecords extends Activity {
                 }
             }
         });
+
+        // 长按条目删除
+        medical_records_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                final Map<String, Object> medical_record = medical_records
+                        .get((int) id);
+                Dialog dlg = new AlertDialog.Builder(MedicalRecords.this)
+                        .setTitle(R.string.confirm_delete)
+                        .setMessage(R.string.confirm_delete_person)
+                        .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // confirm delete this person
+                                dataAdapter.deletePerson((Integer) medical_record.get("userid"));
+                                updateMedicalRecords();
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // do nothing
+                            }
+                        }).create();
+                dlg.show();
+
+                return false;
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateMedicalRecords();
+    }
+    /**
+     * Notify the list view that the data of medical records have been changed.
+     */
+    protected void updateMedicalRecords() {
+        medical_records = dataAdapter.get_medical_records();
+        this.medical_records_adpter = new MedicalRecordAdapter(this,
+                medical_records, R.layout.item_medical_record, null, null);
+        medical_records_list.setAdapter(medical_records_adpter);
+        medical_records_adpter.notifyDataSetChanged();
+    }
+
+    /**
+     * Get parameters of this Activity
+     */
+    private void getParameter() {
+        // Get the parameter
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("sound_type", 0);
+        if (type != 0) {
+            this.target = TARGET_SAVE_RECORD;
+            // TODO: magic numbers
+            if (type == AudioRecorder.BREATH_SOUNDS) {
+                this.sound_type = 2;
+            } else if (type == AudioRecorder.HEART_SOUNDS) {
+                this.sound_type = 8;
+            } else {
+                this.sound_type = type;
+            }
+            this.sound_file = intent.getStringExtra("sound_file");
+            if (null == this.sound_file) {
+                MedicalRecords.this.finish();
+            }
+        } else {
+            this.target = TARGET_VIEW_RECORD;
+        }
+    }
+
+    private void getElements() {
+        new_medical_record = (TextView) findViewById(R.id.new_medical_record);
+        new_medical_record_form = (TableLayout) findViewById(R.id.new_medical_record_form);
+        new_medical_record_cancel = (Button) findViewById(R.id.new_medical_record_cancel);
+        new_medical_record_save = (Button) findViewById(R.id.new_medical_record_save);
+        medical_records_list = (ListView) findViewById(R.id.medical_records_list);
+        new_medical_record_name = (EditText) findViewById(R.id.new_medical_record_name);
+        new_medical_record_gender = (RadioGroup) findViewById(R.id.new_medical_record_gender);
+        new_medical_record_age = (EditText) findViewById(R.id.new_medical_record_age);
+        new_medical_record_tel = (EditText) findViewById(R.id.new_medical_record_tel);
     }
 
     /**
      * Close the form of creating new medical record.
      */
-    private void close_new_medical_record_form() {
+    protected void close_new_medical_record_form() {
         new_medical_record_name.setText("");
         new_medical_record_gender.clearCheck();
         new_medical_record_tel.setText("");

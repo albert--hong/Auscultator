@@ -1,8 +1,10 @@
 package com.auscultator.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.auscultator.data.DataAdapter;
 import com.auscultator.data.SAX_AudioTagService;
 
 import java.io.InputStream;
@@ -92,6 +95,9 @@ public class Menu extends Activity {
         });
     }
 
+    /**
+     * Initialize the global environment for the application.
+     */
     private void initializeApplication() {
         // Get the heart sounds' list from library
         int resId = getResources().getIdentifier("audiotags", "raw", getPackageName());
@@ -100,5 +106,9 @@ public class Menu extends Activity {
         }
         InputStream ins = getResources().openRawResource(resId);
         SAX_AudioTagService.initialize(ins);
+        // initialize the SQLite
+        SQLiteDatabase db = openOrCreateDatabase("auscultation.db",
+                Context.MODE_PRIVATE, null);
+        DataAdapter.getInstance().initialize(db);
     }
 }

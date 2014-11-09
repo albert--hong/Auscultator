@@ -1,9 +1,6 @@
 package com.auscultator.data;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * Created by HongYan on 2014/6/29.
+ * The data adapter of the application.
+ * @author hongyan
  */
 public class DataAdapter {
     private final static String TAG = "DataAdapter";
+
     /**
      * The the instance for singleton model
      */
@@ -25,33 +24,49 @@ public class DataAdapter {
 
     private SQLiteDatabase db;
 
-    private DataAdapter(SQLiteDatabase sqliteDB) {
-        this.db = sqliteDB;
-        this.create_db();
+    private DataAdapter() {
+        this.db = null;
     }
-
-    public static DataAdapter getInstance(SQLiteDatabase sqliteDB) {
+    public static DataAdapter getInstance() {
         if (mInstance == null) {
-            mInstance = new DataAdapter(sqliteDB);
+            mInstance = new DataAdapter();
         }
         return mInstance;
     }
 
     /**
+     * Initialize the database for data adapter.
+     * @param database
+     */
+    public void initialize(SQLiteDatabase database) {
+        this.db = database;
+        this.create_db();
+    }
+    /**
      * Create the tables for database.
      *
-     * @return
+     * @return error_code
      */
     private int create_db() {
-        // 性别： 男的为1，女的为0；
-        // create person table
-        String sql_create_person_table = "CREATE TABLE IF NOT EXISTS person("
-                + "_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT, "
-                + "gender SMALLINT, " + "age SMALLINT, " + "tel TEXT" + ");";
+        // create person table 创建个人信息表
+        String sql_create_person_table = "CREATE TABLE IF NOT EXISTS person(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "gender SMALLINT, " +
+                "age SMALLINT, " +
+                "tel TEXT," +
+                "origin TEXT," +
+                "married SMALLINT," +
+                "diagnosis_time DATETIME, " +
+                "admission_time DATETIME, " +
+                "chief_complaint TEXT," +
+                "HPI TEXT, " +
+                "past_history TEXT," +
+                "personal_history TEXT" +
+                ");";
 
         Log.d(TAG, sql_create_person_table);
-        // 声音类型：breath为2，heart为8
-        // create records table
+        // create records table 创建病历表
         String sql_create_records_table = "CREATE TABLE IF NOT EXISTS medical_records("
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "userid INTEGER, "
@@ -73,18 +88,16 @@ public class DataAdapter {
         return 0;
     }
 
-    private boolean if_db_exist() {
-        return false;
-    }
-
     /**
      * Create one person info.
      *
-     * @param person_info
+     * @param person_info The object describing person
      * @return person_id
      */
     public int create_person(Map<String, Object> person_info) {
         int person_id = -1;
+        Object tmpValue;
+
         if (person_info.containsKey("name")
                 && person_info.containsKey("gender")
                 && person_info.containsKey("age")
@@ -93,12 +106,36 @@ public class DataAdapter {
             Integer gender = (Integer) person_info.get("gender");
             Integer age = (Integer) person_info.get("age");
             String tel = (String) person_info.get("tel");
+            tmpValue = person_info.get("origin");
+            String origin = tmpValue != null ? (String) tmpValue : "";
+            tmpValue = person_info.get("married");
+            Integer married = tmpValue != null ? ((Integer) tmpValue) : 0;
+            tmpValue = person_info.get("diagnosis_time");
+            String diagnosisTime = (String) tmpValue;
+            tmpValue = person_info.get("admission_time");
+            String admissionTime = (String) tmpValue;
+            tmpValue = person_info.get("chief_complaint");
+            String chiefComplaint = (String) tmpValue;
+            tmpValue = person_info.get("HPI");
+            String HPI = (String) tmpValue;
+            tmpValue = person_info.get("past_history");
+            String pastHistory = (String) tmpValue;
+            tmpValue = person_info.get("personal_history");
+            String personalHistory = (String) tmpValue;
 
             ContentValues values = new ContentValues();
             values.put("name", name);
             values.put("gender", gender);
             values.put("age", age);
             values.put("tel", tel);
+            values.put("origin", origin);
+            values.put("married", married);
+            values.put("diagnosis_time", diagnosisTime);
+            values.put("admission_time", admissionTime);
+            values.put("chief_complaint", chiefComplaint);
+            values.put("HPI", HPI);
+            values.put("past_history", pastHistory);
+            values.put("personal_history", personalHistory);
 
             long rowid = this.db.insert("person", null, values);
 
@@ -106,7 +143,7 @@ public class DataAdapter {
                     "SELECT _id FROM person WHERE rowid=?;",
                     new String[]{String.valueOf(rowid)});
 
-            if (cursor.moveToFirst() != false) {
+            if (cursor.moveToFirst()) {
                 person_id = cursor.getInt(cursor.getColumnIndex("_id"));
             }
         }
@@ -114,11 +151,42 @@ public class DataAdapter {
     }
 
     /**
+     * Create one person info.
+     *
+     * @param person_values The object describing person
+     * @return person_id
+     */
+    public int create_person(ContentValues person_values) {
+        int person_id = -1;
+
+        long rowid = this.db.insertWithOnConflict("person", null, person_values, SQLiteDatabase.CONFLICT_REPLACE);
+        Cursor cursor = this.db.rawQuery(
+                "SELECT _id FROM person WHERE rowid=?;",
+                new String[]{String.valueOf(rowid)});
+
+        if (cursor.moveToFirst()) {
+            person_id = cursor.getInt(cursor.getColumnIndex("_id"));
+        }
+
+        return person_id;
+    }
+
+    /**
+     * Delete one person info from person table
+     * @param userid The person's userid.
+     * @return success
+     */
+    public boolean deletePerson(int userid) {
+        int count = this.db.delete("person", "_id=?", new String[] {Integer.toString(userid)});
+        return count > 0;
+    }
+
+    /**
      * Create a medical record.
      *
-     * @param userid
-     * @param record
-     * @return
+     * @param userid The user's id
+     * @param record The object of record
+     * @return error_code
      */
     public int create_record(Integer userid, Map<String, Object> record) {
         if (userid > 0 && record.containsKey("type")
@@ -144,7 +212,7 @@ public class DataAdapter {
     /**
      * Create medical record with the sound.
      *
-     * @param record
+     * @param record The object of record
      * @return error_code
      */
     public int create_person_record(Map<String, Object> record) {
@@ -176,7 +244,7 @@ public class DataAdapter {
     /**
      * Query the medical records list.
      *
-     * @return
+     * @return records The list of record object.
      */
     public List<Map<String, Object>> get_medical_records() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -214,13 +282,13 @@ public class DataAdapter {
     /**
      * Get the cursor of heart sounds
      *
-     * @param userid
+     * @param userid The user's id
      * @return cursor
      */
     public Cursor get_heart_sounds(Integer userid) {
         return this.db
                 .rawQuery(
-                        "SELECT strftime('%Y年%m月%d日 %H:%M', time) time,sound_file,sound_path,_id "
+                        "SELECT strftime('%Y年%m月%d日 %H:%M', time, 'localtime') time,sound_file,sound_path,_id "
                                 + "FROM medical_records WHERE userid=? AND type=8 ORDER BY time DESC;",
                         new String[]{String.valueOf(userid)});
     }
@@ -228,13 +296,13 @@ public class DataAdapter {
     /**
      * Get the cursor of breath sounds
      *
-     * @param userid
-     * @return
+     * @param userid The user's id
+     * @return cursor
      */
     public Cursor get_breath_sounds(Integer userid) {
         return this.db
                 .rawQuery(
-                        "SELECT strftime('%Y年%m月%d日 %H:%M', time) time,sound_file,sound_path,_id "
+                        "SELECT strftime('%Y年%m月%d日 %H:%M', time, 'localtime') time,sound_file,sound_path,_id "
                                 + "FROM medical_records WHERE userid=? AND type=2 ORDER BY time DESC;",
                         new String[]{String.valueOf(userid)});
     }
@@ -242,7 +310,7 @@ public class DataAdapter {
     /**
      * Get the cursor of heart sounds
      *
-     * @return
+     * @return cursor
      */
     public Cursor get_heart_sounds() {
         return this.db
@@ -259,7 +327,7 @@ public class DataAdapter {
     /**
      * Get the cursor of breath sounds
      *
-     * @return
+     * @return cursor
      */
     public Cursor get_breath_sounds() {
         return this.db
@@ -271,5 +339,20 @@ public class DataAdapter {
                                 + "FROM medical_records LEFT JOIN person "
                                 + "WHERE medical_records.userid=person._id and medical_records.type=2 "
                                 + "ORDER BY time DESC;", null);
+    }
+
+    /**
+     * Get the cursor of specified person.
+     * @param userid The person's userid.
+     * @return cursor
+     */
+    public Cursor getPersonInfo(int userid) {
+        return this.db.rawQuery(
+                "SELECT _id,name,gender,age,tel,origin,married," +
+                        "strftime('%Y年%m月%d日', diagnosis_time) diagnosis_time," +
+                        "strftime('%Y年%m月%d日', admission_time) admission_time," +
+                        "chief_complaint,HPI,past_history,personal_history " +
+                        "FROM person WHERE _id=?;",
+                new String[]{String.valueOf(userid)});
     }
 }
